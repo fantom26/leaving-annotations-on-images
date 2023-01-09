@@ -1,0 +1,28 @@
+.btn {
+  @include flex-all-center;
+  @include font-source(false, 1.6rem, var(--clr-black), 600, 125%);
+  @include transition(var(--transition), color, background-color);
+  border-radius: 0.4rem;
+  padding: 0.4rem 1rem;
+  width: max-content;
+  min-width: 15.5rem;
+  min-height: 4rem;
+  color: #1e1e1e;
+  background-color: var(--clr-grey);
+
+  &:disabled,
+  &.disabled {
+    @include transition(var(--transition), color, background-color);
+    color: var(--clr-white);
+    background-color: var(--clr-btn-disabled);
+    pointer-events: none;
+  }
+
+  @media (hover) {
+    &:hover {
+      @include transition(var(--transition), color, background-color);
+      color: var(--clr-white);
+      background-color: var(--clr-dark);
+    }
+  }
+}

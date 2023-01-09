@@ -1,46 +1,61 @@
-# Getting Started with Create React App
+# Annotations experience
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This test task is about implementing a feature of leaving annotations on images, like on Figma or Invision, but much simpler.
 
-## Available Scripts
+The main purpose is to see your code structure, code quality, and approach in general.
 
-In the project directory, you can run:
+## Getting Started
 
-### `yarn start`
+### Mock server
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Use [json-server](https://github.com/typicode/json-server) to make simple CRUD mock server.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+It basically creates the following endpoints:
 
-### `yarn test`
+```
+GET v1/annotations
+POST v1/annotations
+DELETE v1/annotations/{id}
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Install and launch it:**
 
-### `yarn build`
+```
+npm i -g json-server
+json-server --watch db.json
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Now you should have a backend to send your requests to.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Mockup
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+[Get a mockup](https://www.figma.com/file/RkOUnhCQ4fydOnRzuXd6SW/Test-Task?node-id=0%3A1). If you don't have access, please write an email to dev@24slides.com.
 
-### `yarn eject`
+### How annotations work?
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+An annotation is a comment you can leave on an image to request some change.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+A position of the annotation represented in `x`, `y` numbers between `0` and `1`, where `0` is top or left, `1` is right or bottom.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+When user clicks on the image, the calculation of `x` and `y` is gonna be:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```js
+x = left offset / width
+y = top offset / height
+```
 
-## Learn More
+### Requirements
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- The required stack: React, SCSS. Other tools are up to you
+- Create a markup according to the mockup, the layout should be responsive
+- Implement the possibility to create annotations on the image
+    - Send a request to `POST v1/annotations` when submitting new annotation
+    - Implement the possibility to delete an annotation via `DELETE v1/annotations/{id}`
+- If you resize/zoom the browser tab, annotations should stay on same places on the image
+- Preload a default image on initialization and render annotations from `GET v1/annotations`
+- No unnecessary things in the final code like commented code, debug logs, etc
+- Follow best practices as much as possible and focus on quality
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Any questions?
+
+If you have any questions or suggestions related to the task, please submit an issue.

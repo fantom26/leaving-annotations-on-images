@@ -1,0 +1,58 @@
+@import "./settings/functions.scss";
+@import "./settings/fonts.scss";
+@import "./mixins/index.scss";
+@import "./settings/normalize.scss";
+
+:root {
+  --content-width: 100rem;
+  --container-offset: 1.5rem;
+  --container-width: calc(var(--content-width) + (var(--container-offset) * 2));
+  --transition: 0.3s;
+
+  --clr-dark: #4a4a4a;
+  --clr-grey: #bebebe;
+  --clr-white: #ffffffff;
+  --clr-bg: #1e1e1e;
+  --clr-text: #909090;
+
+  --clr-btn-hover: #ffe302;
+  --clr-btn-disabled: #b4b4b4;
+}
+
+body {
+  @include font-source(OpenSans, 1.4rem, var(--clr-dark), 400, false);
+  background-color: var(--clr-bg);
+}
+
+main {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: 100%;
+  min-width: 32rem;
+  min-height: 100%;
+}
+
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: var(--container-offset);
+  padding-left: var(--container-offset);
+  width: 100%;
+  max-width: var(--container-width);
+}
+
+@import "./components/ui/btn.scss";
+@import "./components/ui/typography.scss";
+@import "./components/ui/annotation.scss";
+@import "./components/ui/point.scss";
+@import "./components/ui/comment.scss";
+@import "./components/sections/header.scss";
+@import "./components/sections/footer.scss";
+@import "./components/pages/home/gallery.scss";

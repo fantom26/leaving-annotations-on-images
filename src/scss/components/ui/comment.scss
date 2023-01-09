@@ -1,0 +1,52 @@
+.comment {
+  --pointWidth: 3.2rem;
+
+  position: absolute;
+  left: var(--left);
+  top: var(--top);
+
+  .annotation-wrapper {
+    padding: 1.6rem 2.4rem;
+    opacity: 1;
+    visibility: visible;
+    @include transition(var(--transition), opacity, visibility);
+  }
+
+  &-input {
+    position: relative;
+    display: flex;
+    flex: 1;
+    border-bottom: 0.1rem solid rgba(#9398a2, 0.5);
+
+    input {
+      outline: none;
+      padding-right: 3.5rem;
+      width: 100%;
+      min-height: 3rem;
+
+      &::placeholder {
+        color: #9398a2;
+      }
+    }
+
+    &__button {
+      position: absolute;
+      right: 0.5rem;
+      top: 50%;
+      display: flex;
+      transform: translateY(-50%);
+
+      path {
+        fill: #0a7abf;
+        transition: fill var(--transition);
+      }
+
+      &:disabled {
+        path {
+          fill: var(--clr-grey);
+          transition: fill var(--transition);
+        }
+      }
+    }
+  }
+}

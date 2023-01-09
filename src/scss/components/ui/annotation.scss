@@ -1,0 +1,92 @@
+.annotation {
+  --pointWidth: 3.2rem;
+
+  position: absolute;
+  left: var(--left);
+  top: var(--top);
+
+  &:focus .annotation-wrapper,
+  &:hover .annotation-wrapper {
+    opacity: 1;
+    visibility: visible;
+    @include transition(var(--transition), opacity, visibility);
+  }
+
+  .point {
+    cursor: pointer;
+  }
+
+  &-wrapper {
+    position: absolute;
+    left: calc(var(--pointWidth) / 2);
+    z-index: 10;
+    border: 0.1rem solid #efeff0;
+    border-radius: 0.4rem;
+    padding: 1.6rem;
+    width: 36.5rem;
+    min-height: 6rem;
+    background-color: var(--clr-white);
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, 2.4rem);
+    @include transition(var(--transition), opacity, visibility);
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 0;
+      border-top: 0.1rem solid #efeff0;
+      border-left: 0.1rem solid #efeff0;
+      width: 1.2rem;
+      height: 1.2rem;
+      background-color: var(--clr-white);
+
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+  }
+
+  &-body {
+    display: flex;
+
+    &__avatar {
+      display: flex;
+      flex-shrink: 1;
+      align-items: center;
+      justify-content: center;
+      margin-right: 0.8rem;
+      border-radius: 50%;
+      height: 3.2rem;
+      min-width: 3.2rem;
+      color: var(--clr-white);
+      background-color: var(--random-color);
+    }
+
+    &__text {
+      margin-top: 0.4rem;
+    }
+
+    &__delete {
+      position: absolute;
+      right: 0.8rem;
+      top: 0.8rem;
+      cursor: pointer;
+
+      svg {
+        path {
+          fill: var(--clr-grey);
+          transition: fill var(--transition);
+
+          @media (hover) {
+            &:hover {
+              fill: var(--clr-dark);
+              transition: fill var(--transition);
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+}
